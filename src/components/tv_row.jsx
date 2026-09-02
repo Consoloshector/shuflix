@@ -49,7 +49,7 @@ export default function TvRow({ title }) {
                 {Tvmovies.map((Tvmovie) => (
                     <Link key={Tvmovie.id} to={`/tv/${Tvmovie.id}`} className="block min-w-[35%] shrink-0">
                         <div className="relative shadow-lg border-2 border-zinc-800/90 rounded-xl ">
-                            <img className="w-full h-[190px] md:h-[250px] lg:h-[300px] rounded-xl opacity-[0.8] transition-all duration-300 hover:opacity-[0.6] cursor-pointer" src={`https://image.tmdb.org/t/p/w780${Tvmovie.backdrop_path}`} alt={Tvmovie.name} />
+                            <img className="w-full h-[160px] sm:h-[180px] md:h-[250px] lg:h-[300px] rounded-xl opacity-[0.8] transition-all duration-300 hover:opacity-[0.6] cursor-pointer" src={`https://image.tmdb.org/t/p/w780${Tvmovie.backdrop_path}`} alt={Tvmovie.name} />
                             <span className={`absolute top-2 right-2 text-white font-bold text-xs px-2 py-1 rounded ${Tvmovie.rating > 8 ? "bg-emerald-600" :
                                     Tvmovie.rating > 6 ? "bg-amber-600" :
                                         "bg-rose-600"

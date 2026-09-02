@@ -1,8 +1,9 @@
 import { Search, Menu, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { TV_IDS } from './IDS/TV_IDS';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { MOVIE_IDS } from './IDS/MOVIE_IDS';
+
 
 function Navbar() {
 
@@ -55,10 +56,18 @@ function Navbar() {
         <nav className='relative flex justify-between items-center p-6 bg-black gap-4 h-[10vh] z-50'>
             <h1 onClick={() => navigate("/")} className="text-red-600 font-bold text-2xl cursor-pointer">SHUFLIX</h1>
             <ul className='gap-6 text-gray-400 hidden sm:flex'>
-                <li><a href="#">Films</a></li>
-                <li><a href="#">Series</a></li>
-                <li><a href="#">Favorites</a></li>
-                <li><a href="#">About me</a></li>
+                <li>
+                    <Link to="/media_more/movie" className="hover:text-white transition">Films</Link>
+                </li>
+                <li>
+                    <Link to="/media_more/tv" className="hover:text-white transition">Series</Link>
+                </li>
+                <li>
+                    <Link to="#" className="hover:text-white transition">Favorites</Link>
+                </li>
+                <li>
+                    <Link to="#" className="hover:text-white transition">About me</Link>
+                </li>
             </ul>
             <div className='relative flex flex-col max-w-[180px] min-[500px]:max-w-[550px] bg-[#2B2B2B] rounded-md z-50'>
                 <div className="flex items-center px-1 py-1 gap-1">
