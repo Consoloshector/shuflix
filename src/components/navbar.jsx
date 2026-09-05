@@ -15,6 +15,8 @@ function Navbar() {
 
     useEffect(() => {
 
+         setIsOpen(false);
+
         if (!query.trim()) {
             setResults([])
             return
@@ -41,7 +43,7 @@ function Navbar() {
                 }
             })
 
-    }, [query]);
+    }, [query,location.pathname]);
 
 
     if (location.pathname.includes("media_more")) { return null }
@@ -96,10 +98,18 @@ function Navbar() {
                 isOpen && (
                     <div className='absolute top-full left-0 w-full bg-[#141414] p-5 sm:hidden'>
                         <ul className='flex flex-col gap-6 text-gray-400 font-medium text'>
-                            <li><a className='hover:text-red-600 transition' href="#">Films</a></li>
-                            <li><a href="#">Series</a></li>
-                            <li><a href="#">Favorites</a></li>
-                            <li><a href="#">About me</a></li>
+                            <li>
+                                <Link to="/media_more/movie" className="hover:text-white transition">Films</Link>
+                            </li>
+                            <li>
+                                <Link to="/media_more/tv" className="hover:text-white transition">Series</Link>
+                            </li>
+                            <li>
+                                <Link to="#" className="hover:text-white transition">Favorites</Link>
+                            </li>
+                            <li>
+                                <Link to="#" className="hover:text-white transition">About me</Link>
+                            </li>
                         </ul>
                     </div>
                 )

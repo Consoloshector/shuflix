@@ -22,7 +22,7 @@ function App() {
           <>
             <HeroBanner />
             <TvRow title={'Seriallar'} />
-            <MovieRow title={'Filmler'} />
+            <MovieRow title={'Filmlər'} />
           </>
         } />
 

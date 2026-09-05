@@ -7,15 +7,22 @@ export default function TvDetail() {
     const [clicked_movie, setClicked_movie] = useState(null);
     const navigate = useNavigate();
 
-    const tv_id = TV_IDS.map((item)=>item.id);
+    const tv_id = TV_IDS.map((item) => item.id);
     const isAllowed = tv_id.includes(Number(id));
     useEffect(() => {
+        window.scrollTo(0, 0)
         if (!isAllowed) {
             return
         }
-        fetch(`https://api.themoviedb.org/3/tv/${id}?api_key=717ecabf3d83680c8967286c22eec4b9&language=tr-TR`)
-            .then((res) => res.json())
-            .then((data) => setClicked_movie(data));
+        Promise.all([fetch(`https://api.themoviedb.org/3/tv/${id}?api_key=717ecabf3d83680c8967286c22eec4b9&language=tr-TR`),
+        fetch(`https://api.themoviedb.org/3/tv/${id}/aggregate_credits?api_key=717ecabf3d83680c8967286c22eec4b9&language=tr-TR`)])
+            .then(([resTv, resCredits]) => Promise.all([resTv.json(), resCredits.json()]))
+            .then(([tv_data, credits_data]) => {
+                setClicked_movie({
+                    ...tv_data,
+                    cast: credits_data?.cast?.slice(0, 10)
+                })
+            });
     }, [id, isAllowed]);
 
 
@@ -42,7 +49,7 @@ export default function TvDetail() {
     const full_episodes = clicked_movie.seasons?.filter((season) => season.season_number > 0).reduce((total, season) => total + season.episode_count, 0);
 
     return (
-        <div className="relative flex w-full min-h-[90vh] bg-black">
+        <div className="relative flex flex-col w-full min-h-[90vh] bg-black">
             <button className="absolute top-5 left-5 text-white bg-zinc-600 px-2 rounded-xl flex items-center z-12 cursor-pointer hover:bg-red-600" onClick={() => navigate(-1)}>← Geri</button>
             <img className="absolute inset-0 w-full h-full opacity-[0.5] object-cover" src={`https://image.tmdb.org/t/p/w1280${clicked_movie.backdrop_path}`} alt={clicked_movie.name} />
             <div className="absolute bg-gradient-to-t from-black to-transparent inset-0"></div>
@@ -66,6 +73,24 @@ export default function TvDetail() {
                     <p className="lg:text-xl">{clicked_movie.overview}</p>
                 </div>
             </div>
+            {clicked_movie.cast?.length > 0 && (
+                <div className="relative z-10 max-w-5xl w-full mx-auto px-5 py-6">
+                    <h2 className="text-xl font-bold text-white mb-4">Oyuncular</h2>
+                    <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-thumb-olive-100">
+                        {clicked_movie.cast.map((actor) => (
+                            <div key={actor.id} className="min-w-[100px] text-center flex flex-col items-center">
+                                <img
+                                    className="w-20 h-20 rounded-full object-cover border-2 border-zinc-700 mb-2 bg-zinc-800"
+                                    src={actor.profile_path ? `https://image.tmdb.org/t/p/w185${actor.profile_path}` : "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_1280.png"}
+                                    alt={actor.name}
+                                />
+                                <p className="text-white font-semibold text-xs line-clamp-1">{actor.name}</p>
+                                <p className="text-zinc-400 text-[10px] line-clamp-1">{actor.roles?.[0]?.character || actor.character || "—"}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
         </div>
     )
 }
