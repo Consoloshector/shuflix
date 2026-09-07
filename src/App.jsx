@@ -6,6 +6,7 @@ import HeroBanner from './components/hero_banner'
 import TvRow from "./components/tv_row";
 import TvDetail from "./components/TV_detail";
 import MovieRow from "./components/movie_row";
+import MatchRow from "./components/match_row";
 import MovieDetail from "./components/Movie_detail";
 import MediaMore from "./components/media_more";
 
@@ -23,6 +24,7 @@ function App() {
             <HeroBanner />
             <TvRow title={'Seriallar'} />
             <MovieRow title={'Filmlər'} />
+            <MatchRow />
           </>
         } />
 
