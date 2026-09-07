@@ -35,12 +35,11 @@ export default function MovieRow({ title }) {
                     <Link key={movie.id} to={`/movie/${movie.id}`}>
                         <div className="relative flex flex-col min-w-[200px] min-h-[300px] border-1 border-zinc-800/80 rounded-lg">
                             <img className="w-full rounded-lg" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="" />
-                            <span className={`absolute top-2 right-2 text-white font-bold text-xs px-2 py-1 rounded ${movie.rating > 7.9 ? "bg-emerald-600" :
-                                movie.rating > 6 ? "bg-amber-600" :
-                                    "bg-rose-600"
-                                }`}>
-                                ★ {movie.rating}
-                            </span>
+                            <span className={`absolute top-2 right-2 text-white font-bold text-xs px-2 py-1 rounded ${movie.rating > 8.9 ? "bg-emerald-600" :
+                           movie.rating>7.9 ?"bg-green-600" : movie.rating > 6 ? "bg-amber-600" : "bg-rose-600"
+                            }`}>
+                            ★ {movie.rating}
+                        </span>
                             <div className="absolute w-full bottom-0 px-2 font-medium bg-gradient-to-t from-black to-transparent">
                                 <p className="">{movie.title}</p>
                                 <p>{movie.release_date?.split("-")[0]}</p>

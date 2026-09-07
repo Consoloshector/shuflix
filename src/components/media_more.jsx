@@ -53,7 +53,7 @@ export default function MediaMore() {
                 <button className="absolute top-2 left-3 text-white bg-zinc-600 px-2 rounded-xl flex items-center z-50 cursor-pointer hover:bg-red-600" onClick={() => navigate(-1)}>← Geri</button>
                 <div className="flex flex-col gap-2 mt-3">
                     <h1 className="font-bold px-2 border-l-4 border-red-600 text-3xl"> {istv ? "Bütün seriallar" : "Bütün filmler"} </h1>
-                    <p className="px-2 text-zinc-300">Kolleksiyamdakı bütün {`${istv?"serialları":"filmləri"}`} kəşf edin</p>
+                    <p className="px-2 text-zinc-300">Kolleksiyamdakı bütün {`${istv ? "serialları" : "filmləri"}`} kəşf edin</p>
                 </div>
                 <div className="flex items-center px-3 py-1 gap-1 border-1 border-zinc-600 rounded-lg gap-2 bg-zinc-900">
                     <Search className='w-4 h-4 text-zinc-400 hover:text-white transition cursor-pointer'></Search>
@@ -64,9 +64,8 @@ export default function MediaMore() {
                 {filteredmedia.map((media) => (
                     <Link to={`/${type}/${media.id}`} key={media.id} className="relative border-2 border-zinc-900 hover:border-2 hover:border-zinc-700 rounded-2xl overflow-hidden">
                         <img className="w-full h-[230px] sm:h-[280px]" src={`https://image.tmdb.org/t/p/w780${media.poster_path}`} alt={media.name} />
-                         <span className={`absolute top-2 right-2 text-white font-bold text-xs px-2 py-1 rounded ${media.rating > 8 ? "bg-emerald-600" :
-                            media.rating > 6 ? "bg-amber-600" :
-                                "bg-rose-600"
+                         <span className={`absolute top-2 right-2 text-white font-bold text-xs px-2 py-1 rounded ${media.rating > 8.9 ? "bg-emerald-600" :
+                           media.rating>7.9 ?"bg-green-600" : media.rating > 6 ? "bg-amber-600" : "bg-rose-600"
                             }`}>
                             ★ {media.rating}
                         </span>
@@ -82,7 +81,7 @@ export default function MediaMore() {
                         </div>
                     </Link>
                 ))}
-            </div>
         </div>
+        </div >
     )
 }
