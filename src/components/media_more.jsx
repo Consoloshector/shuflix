@@ -63,7 +63,7 @@ export default function MediaMore() {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 p-4">
                 {filteredmedia.map((media) => (
                     <Link to={`/${type}/${media.id}`} key={media.id} className="relative border-2 border-zinc-900 hover:border-2 hover:border-zinc-700 rounded-2xl overflow-hidden">
-                        <img className="w-full h-[230px] sm:h-[280px]" src={`https://image.tmdb.org/t/p/w500${media.poster_path}`} alt={media.name} />
+                        <img className="w-full h-[230px] sm:h-[280px]" src={`https://image.tmdb.org/t/p/w780${media.poster_path}`} alt={media.name} />
                          <span className={`absolute top-2 right-2 text-white font-bold text-xs px-2 py-1 rounded ${media.rating > 8 ? "bg-emerald-600" :
                             media.rating > 6 ? "bg-amber-600" :
                                 "bg-rose-600"
