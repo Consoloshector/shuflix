@@ -1,5 +1,5 @@
 export const TV_IDS = [
-    { id: 19885, rating: 9.9 },
+    { id: 19885, rating: 9.7 },
     { id: 2288, rating: 6.7 },
     { id: 64684, rating: 4.7 },
     { id: 93405, rating: 7 },

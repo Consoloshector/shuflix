@@ -46,7 +46,7 @@ function Navbar() {
     }, [query,location.pathname]);
 
 
-    if (location.pathname.includes("media_more")) { return null }
+    if (location.pathname.includes("media_more") || location.pathname.includes("match_more")) { return null }
 
     const select = (item) => {
         setQuery("")

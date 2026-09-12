@@ -5,7 +5,7 @@ function Hero_banner() {
     const [movie, set_movie] = useState(null);
 
     useEffect(() => {
-        fetch("https://api.themoviedb.org/3/search/movie?query=inception&api_key=717ecabf3d83680c8967286c22eec4b9")
+        fetch("https://api.themoviedb.org/3/search/movie?query=ready or not&api_key=717ecabf3d83680c8967286c22eec4b9")
             .then(res => res.json())
             .then(data => {
                 set_movie(data.results[0]);

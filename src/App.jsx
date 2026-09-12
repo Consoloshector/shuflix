@@ -9,6 +9,8 @@ import MovieRow from "./components/movie_row";
 import MatchRow from "./components/match_row";
 import MovieDetail from "./components/Movie_detail";
 import MediaMore from "./components/media_more";
+import MatchMore from "./components/match_more";
+import MatchDetail from "./components/Match_detail";
 
 
 function App() {
@@ -30,6 +32,8 @@ function App() {
 
         <Route path="/tv/:id" element={<TvDetail />} />
         <Route path="/movie/:id" element={<MovieDetail />} />
+        <Route path="/match/:id" element={<MatchDetail />} />
+        <Route path="/match_more" element={<MatchMore />} />
         <Route path="/media_more/:type" element={<MediaMore />} />
       </Routes>
 
