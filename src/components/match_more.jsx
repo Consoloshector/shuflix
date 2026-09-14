@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import { MATCH_DATA } from "./IDS/MATCH_IDS";
 
 export default function MatchMore() {
@@ -15,7 +15,7 @@ export default function MatchMore() {
             <div className="grid grid-cols-1 min-[360px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
 
                 {MATCH_DATA.map((match) => (
-                    <div key={match.id} to={`/match/${match.id}`} className="border-1 border-zinc-800 rounded-xl overflow-hidden">
+                    <Link key={match.id} to={`/match/${match.id}`} className="border-1 border-zinc-800 rounded-xl overflow-hidden">
                         <div className="relative flex flex-col w-full gap-2 p-3 justify-between
                         sm:flex-row">
                             <p className="text-[0.9rem] truncate">{match.league}</p>
@@ -47,7 +47,7 @@ export default function MatchMore() {
                             <p className="font-bold text-xs">{match.match_date}</p>
                         </div>
                         <p className="min-[768px]:hidden text-center text-red-500/70 font-bold">{match.raund}</p>
-                    </div>
+                    </Link>
                 ))}
 
             </div>

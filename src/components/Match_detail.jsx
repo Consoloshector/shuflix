@@ -1,20 +1,44 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { MATCH_DATA } from "./IDS/MATCH_IDS"
+import { useEffect, useState } from "react";
+
+function StatRow({ home, away, home_percent, away_percent, homeBg, awayBg, label }) {
+    return (
+        <div className="flex flex-col gap-1">
+            <div className="flex justify-between text-white text-xs">
+                <p>{home}</p>
+                <p>{label}</p>
+                <p>{away}</p>
+            </div>
+            <div className="w-full flex bg-zinc-800 rounded-full overflow-hidden">
+                <div style={{ width: `${home_percent}%`, background: `${homeBg}` }} className={`h-3`} />
+                <div style={{ width: `${away_percent}%`, background: `${awayBg}` }} className={`h-3`} />
+            </div>
+        </div>
+    )
+}
 
 export default function MatchDetail() {
 
+    const [activeTab, setActiveTab] = useState("stats")
     const { id } = useParams();
     const navigate = useNavigate();
     const match = MATCH_DATA[id]
 
+    useEffect(() => {
+        { window.scrollTo(0, 0) }
+    }, []);
+
     return (
-        <div className="relative flex flex-col w-full min-h-[90vh] bg-black p-5">
+        <div className="relative flex flex-col w-full min-h-[90vh] bg-black p-3 gap-4">
+
+            <button className="self-start text-white bg-zinc-600 px-2 rounded-xl flex items-center z-12 cursor-pointer hover:bg-red-600" onClick={() => navigate(-1)}>← Geri</button>
 
             <div className="flex flex-col bg-[#0d0d0f] rounded-2xl border-2 border-zinc-800 max-w-4xl mx-auto w-full">
                 <div className="flex flex-col gap-1 w-full justify-between text-white p-6 items-center
                 sm:flex-row">
                     <p className="text-center text-red-500/70 font-bold">{match.league}</p>
-                    <p className="text-xs font-bold text-zinc-400">{match.match_date} * {match.raund}</p>
+                    <p className="text-xs font-bold text-zinc-400">{match.match_date} ● {match.raund}</p>
                 </div>
                 <div className="flex justify-evenly items-center p-2 mb-4">
                     <div className="flex flex-col items-center text-md text-white font-bold gap-1 sm:text-xl">
@@ -39,6 +63,84 @@ export default function MatchDetail() {
                 </div>
             </div>
 
+            <div className="flex flex-col">
+                <div className="flex gap-5 text-zinc-400 font-bold text-sm px-1 max-w-4xl mx-auto w-full py-4 border-b-2 border-zinc-800">
+                    <button onClick={() => setActiveTab("stats")} className={`${activeTab === "stats" ? "text-red-600" : "text-zinc-400"}`}>
+                        Statistika
+                    </button>
+                    <button onClick={() => setActiveTab("goals")} className={`${activeTab === "goals" ? "text-red-600" : "text-zinc-400"}`}>
+                        Xronologiya
+                    </button>
+                    <button onClick={() => setActiveTab("lineups")} className={`${activeTab === "lineups" ? "text-red-600" : "text-zinc-400"}`}>
+                        Heyətlər
+                    </button>
+                </div>
+
+                <div className="w-full flex flex-col">
+                    {activeTab === "stats" && (
+                        <div className="flex flex-col mx-auto max-w-4xl w-full mt-5 gap-1">
+                            <StatRow
+                                label="Topa nezaret"
+                                home={`${match.possesions.home}%`}
+                                away={`${match.possesions.away}%`}
+                                home_percent={`${match.possesions.home_percent}`}
+                                away_percent={`${match.possesions.away_percent}`}
+                                homeBg={`${match.homeBg}`}
+                                awayBg={`${match.awayBg}`}
+                            />
+                            <StatRow
+                                label="Umumi zerbeler"
+                                home={`${match.shoots.home}`}
+                                away={`${match.shoots.away}`}
+                                home_percent={`${match.shoots.home_percent}`}
+                                away_percent={`${match.shoots.away_percent}`}
+                                homeBg={`${match.homeBg}`}
+                                awayBg={`${match.awayBg}`}
+                            />
+                            <StatRow
+                                label="Deqiq zerbeler"
+                                home={`${match.shoots_on_target.home}`}
+                                away={`${match.shoots_on_target.away}`}
+                                home_percent={`${match.shoots_on_target.home_percent}`}
+                                away_percent={`${match.shoots_on_target.away_percent}`}
+                                homeBg={`${match.homeBg}`}
+                                awayBg={`${match.awayBg}`}
+                            />
+                            <StatRow
+                                label="Oturmeler"
+                                home={`${match.pass.home}`}
+                                away={`${match.pass.away}`}
+                                home_percent={`${match.pass.home_percent}`}
+                                away_percent={`${match.pass.away_percent}`}
+                                homeBg={`${match.homeBg}`}
+                                awayBg={`${match.awayBg}`}
+                            />
+                            <StatRow
+                                label="Offside"
+                                home={`${match.offside.home}`}
+                                away={`${match.offside.away}`}
+                                home_percent={`${match.offside.home_percent}`}
+                                away_percent={`${match.offside.away_percent}`}
+                                homeBg={`${match.homeBg}`}
+                                awayBg={`${match.awayBg}`}
+                            />
+                        </div>
+                    )}
+
+                    {activeTab === "goals" && (
+
+                        <div className="flex flex-col mx-auto max-w-4xl w-full mt-5 gap-2 text-white">
+                            {MATCH_DATA[id].goals.map((goal) => (
+                                <div className={`flex ${goal.team === "home" ? "flex-row-reverse" : "flex"} w-full justify-between py-4 px-2 bg-zinc-900 rounded-md font-bold `}>
+                                    <div className="text-red-500 text-xs bg-zinc-800 p-1 text-center rounded-sm">{goal.minute}'</div>
+                                    <div>⚽  {goal.player}</div>
+                                </div>
+                            ))}
+                        </div>
+
+                    )}
+                </div>
+            </div>
 
         </div>
     )
