@@ -20,7 +20,8 @@ function StatRow({ home, away, home_percent, away_percent, homeBg, awayBg, label
 
 export default function MatchDetail() {
 
-    const [activeTab, setActiveTab] = useState("stats")
+    const [activeTab, setActiveTab] = useState("stats");
+    const [activeLineups, setActiveLineups] = useState("home");
     const { id } = useParams();
     const navigate = useNavigate();
     const match = MATCH_DATA[id]
@@ -131,13 +132,53 @@ export default function MatchDetail() {
 
                         <div className="flex flex-col mx-auto max-w-4xl w-full mt-5 gap-2 text-white">
                             {MATCH_DATA[id].goals.map((goal) => (
-                                <div className={`flex ${goal.team === "home" ? "flex-row-reverse" : "flex"} w-full justify-between py-4 px-2 bg-zinc-900 rounded-md font-bold `}>
+                                <div className={`flex ${goal.team === "home" ? "flex-row-reverse" : "flex"} w-full justify-between py-5 px-2 bg-zinc-900 rounded-md font-bold items-center`}>
                                     <div className="text-red-500 text-xs bg-zinc-800 p-1 text-center rounded-sm">{goal.minute}'</div>
-                                    <div>⚽  {goal.player}</div>
+                                    <div className="text-sm">⚽  {goal.player}</div>
                                 </div>
                             ))}
                         </div>
 
+                    )}
+
+                    {activeTab === "lineups" && (
+                        <div className="flex flex-col mx-auto max-w-4xl w-full mt-5 gap-2 text-white justify-between p-2">
+                            <div className="relative w-full h-[500px] flex">
+                                <div className=" bg-[#3c8063] w-[50%] h-full border-2 border-[#77a692]">
+                                    <div>
+                                        {match.lineups.home[0]}
+                                    </div>
+                                </div>
+                                <div className=" bg-[#3c8063] w-[50%] h-full border-2 border-[#77a692]"></div>
+                                <div className="absolute w-[200px] h-[200px] rounded-full left-1/2 top-1/2 border-2 border-[#77a692] -translate-x-1/2 -translate-y-1/2"></div>
+                            </div>
+                            <div className="flex w-full justify-between">
+                                <button className="flex items-center gap-2 font-bold" onClick={() => setActiveLineups("home")}>
+                                    <img className="w-7 h-7" src={MATCH_DATA[id].homeLogo} alt="" />{MATCH_DATA[id].team1}
+                                </button>
+                                <button className="flex items-center gap-2 font-bold flex-row-reverse" onClick={() => setActiveLineups("away")}>
+                                    <img className="w-7 h-7" src={MATCH_DATA[id].awayLogo} alt="" />{MATCH_DATA[id].team2}
+                                </button>
+                            </div>
+                            <div>
+                                {activeLineups === "home" && (
+                                    <div className="flex flex-col gap-1">
+
+                                        {MATCH_DATA[id].lineups.home.map((h_player) => (
+                                            <p className="border-b-2 border-zinc-900 p-3 text-sm">{h_player}</p>
+                                        ))}
+
+                                    </div>
+                                )}
+                                {activeLineups === "away" && (
+                                    <div className="flex flex-col gap-1">
+                                        {MATCH_DATA[id].lineups.away.map((a_player) => (
+                                            <p className="border-b-2 border-zinc-900 p-3 text-sm">{a_player}</p>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        </div>
                     )}
                 </div>
             </div>

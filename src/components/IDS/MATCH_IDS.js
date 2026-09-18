@@ -19,8 +19,8 @@ export const MATCH_DATA = [
         offside: { home: 5, away: 12, home_percent: 26.3, away_percent: 73.7 },
         goals: [
             { minute: 51, player: "Michael", team: "home" },
-            { minute: 74, player: "Ronaldo", team: "away" },
-            { minute: 98, player: "Ronaldo", team: "away" }
+            { minute: 74, player: "Cristiano Ronaldo", team: "away" },
+            { minute: 98, player: "Cristiano Ronaldo", team: "away" }
         ]
     },
     {
@@ -44,7 +44,7 @@ export const MATCH_DATA = [
         goals: [
             { minute: 4, player: "Camilo Durán", team: "home" },
             { minute: 10, player: "Can Uzun", team: "away" },
-            { minute: 78, player: "Farès Chaïbi", team: "away" },
+            { minute: 78, player: "Farès Chaïbi (P)", team: "away" },
             { minute: 80, player: "Camilo Durán", team: "home" },
             { minute: "90+4", player: "Bəhlul Mustafazadə", team: "home" }
         ]
@@ -68,9 +68,9 @@ export const MATCH_DATA = [
         pass: { home: 542, away: 384, home_percent: 58.5, away_percent: 41.5 },
         offside: { home: 1, away: 4, home_percent: 20, away_percent: 80 },
         goals: [
-            { minute: 51, player: "Michael", team: "home" },
-            { minute: 74, player: "Ronaldo", team: "away" },
-            { minute: 98, player: "Ronaldo", team: "away" }
+            { minute: 53, player: "Ivan Perišić", team: "away" },
+            { minute: 68, player: "Cristiano Ronaldo (P)", team: "home" },
+            { minute: "90+4", player: "Gonçalo Ramos", team: "home" }
         ]
     },
     {
@@ -92,9 +92,9 @@ export const MATCH_DATA = [
         pass: { home: 368, away: 556, home_percent: 60.1, away_percent: 39.9 },
         offside: { home: 1, away: 0, home_percent: 100, away_percent: 0 },
         goals: [
-            { minute: 51, player: "Michael", team: "home" },
-            { minute: 74, player: "Ronaldo", team: "away" },
-            { minute: 98, player: "Ronaldo", team: "away" }
+            { minute: 20, player: "Federico Valverde", team: "home" },
+            { minute: 27, player: "Federico Valverde", team: "home" },
+            { minute: 42, player: "Federico Valverde", team: "home" }
         ]
     },
     {
@@ -117,9 +117,10 @@ export const MATCH_DATA = [
         pass: { home: 445, away: 760, home_percent: 63.1, away_percent: 36.9 },
         offside: { home: 4, away: 3, home_percent: 57.1, away_percent: 42.9 },
         goals: [
-            { minute: 51, player: "Michael", team: "home" },
-            { minute: 74, player: "Ronaldo", team: "away" },
-            { minute: 98, player: "Ronaldo", team: "away" }
+            { minute: 21, player: "Martín Zubimendi", team: "away" },
+            { minute: 26, player: "Nuno Mendes", team: "home" },
+            { minute: 45, player: "Mikel Oyarzabal", team: "away" },
+            { minute: 61, player: "Cristiano Ronaldo", team: "home" }
         ]
     },
     {
@@ -141,9 +142,64 @@ export const MATCH_DATA = [
         pass: { home: 542, away: 267, home_percent: 67, away_percent: 33 },
         offside: { home: 1, away: 1, home_percent: 50, away_percent: 50 },
         goals: [
-            { minute: 51, player: "Michael", team: "home" },
-            { minute: 74, player: "Ronaldo", team: "away" },
-            { minute: 98, player: "Ronaldo", team: "away" }
-        ]
+            { minute: 7, player: "Morgan Rogers", team: "home" },
+            { minute: 28, player: "Muhammed Bellumi", team: "away" },
+            { minute: 34, player: "Muhammed Bellumi", team: "away" },
+            { minute: 66, player: "João Pedro", team: "home" }
+        ],
+
+        lineups: {
+            home: [
+                "Emiliano Martínez",
+                "Wesley Fofana",
+                "Levi Colwill",
+                "Jorrel Hato",
+                "Pedro Neto",
+                "Reece James",
+                "Roméo Lavia",
+                "Malo Gusto",
+                "Cole Palmer",
+                "Morgan Rogers",
+                "João Pedro"
+            ],
+            away: [
+                "Konstantinos Tzolakis",
+                "Lewie Coyle",
+                "Semi Ajayi",
+                "John Egan",
+                "Nobel Mendy",
+                "Ryan Giles",
+                "Mohamed Belloumi",
+                "Matt Crooks",
+                "Regan Slater",
+                "Elliot Stroud",
+                "Oliver McBurnie"
+            ]
+        },
+
+        substitutes: {
+            home: [
+                "Mike Penders",
+                "Valentín Barco",
+                "Maxence Lacroix",
+                "Jamie Gittens",
+                "Danny Welbeck",
+                "Geovany Quenda",
+                "Pep Chavarría",
+                "Josh Acheampong",
+                "Estêvão"
+            ],
+            away: [
+                "Dillon Phillips",
+                "Sorba Thomas",
+                "Brooke Norton-Cuffy",
+                "Lucas Herrington",
+                "Matt Targett",
+                "Lucas Gourna-Douath",
+                "Tim Iroegbunam",
+                "Robinio Vaz",
+                "Mohamed-Ali Cho"
+            ]
+        },
     },
 ];

@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { MATCH_DATA } from "./IDS/MATCH_IDS";
 
+const RE_MATCHES = [...MATCH_DATA].reverse();
+
 export default function MatchRow() {
     const [matches, setMatch] = useState([]);
 
     useEffect(() => {
-        setMatch(MATCH_DATA);
+        setMatch(RE_MATCHES);
     }, []);
 
     return (

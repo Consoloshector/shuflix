@@ -1,6 +1,8 @@
 import { useNavigate, Link } from "react-router-dom"
 import { MATCH_DATA } from "./IDS/MATCH_IDS";
 
+const RE_MATCHES = [...MATCH_DATA].reverse();
+
 export default function MatchMore() {
     const navigate = useNavigate();
     return (
@@ -14,7 +16,7 @@ export default function MatchMore() {
             </div>
             <div className="grid grid-cols-1 min-[360px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
 
-                {MATCH_DATA.map((match) => (
+                {RE_MATCHES.map((match) => (
                     <Link key={match.id} to={`/match/${match.id}`} className="border-1 border-zinc-800 rounded-xl overflow-hidden">
                         <div className="relative flex flex-col w-full gap-2 p-3 justify-between
                         sm:flex-row">

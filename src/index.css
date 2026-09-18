@@ -1,1 +1,12 @@
 @import "tailwindcss";
+
+/* Bütün saytda mətni seçilməz edir */
+* {
+  -webkit-user-select: none; /* Safari / iOS */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* IE / Edge */
+  user-select: none;        /* Standart brauzerlər */
+
+  /* Mobil cihazlarda toxunanda əmələ gələn göy/boz parlaqlığı ləğv edir */
+  -webkit-tap-highlight-color: transparent;
+}
