@@ -1,16 +1,36 @@
-# React + Vite
+# 🎬 Shuflix
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Şəxsi film, serial və futbol matçları kolleksiyamı göstərən məlumat platforması.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 📌 Haqqında
 
-## React Compiler
+**Shuflix** — mənim baxdığım, izləməyi planlaşdırdığım film, serial və maraqla izlədiyim futbol matçlarının toplandığı şəxsi watchlist saytımdır. Sayta daxil olan ziyaretçilər TMDB API vasitəsilə film və serialların detallarına, eləcə də keçirilmiş matçların nəticələrinə və statistikalarına baxa bilərlər.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✨ Xüsusiyyətlər
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🎥 **Film və Serial Kataloqu:** Seçilmiş filmlər/seriallar haqqında məlumatlar, treylerlər, reytinqlər və aktyor heyəti (TMDB API).
+- ⚽ **Futbol Matç statistikaları:** Siyahıdakı matçların nəticələri, hesablar, heyətlər və matç içi detallı statistikalar.
+- 📌 **Şəxsi Watchlist nümayişi:** Siyahımdakı kontentlərin səliqəli və rahat interfeysdə təqdim olunması.
+
+---
+
+## 🛠️ İstifadə Olunan Texnologiyalar
+
+- **Frontend:** React.js, Vite, Tailwind CSS
+- **API:** TMDB (The Movie Database) API
+- **Database & Auth (Planlaşdırılır):** Firebase
+
+---
+
+## 🚀 Quraşdırma və İşə Salma
+
+Layihəni lokal mühitinizdə işə salmaq üçün aşağıdakı addımları izləyin:
+
+1. **Repozitoriyanı klonlayın:**
+   ```bash
+   git clone [https://github.com/istifadəçi-adı/shuflix.git](https://github.com/istifadəçi-adı/shuflix.git)
+   cd shuflix
