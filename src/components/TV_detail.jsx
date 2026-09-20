@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { TV_IDS } from "./IDS/TV_IDS";
+import CommentSection from "../comment";
 
 export default function TvDetail() {
     const { id } = useParams();
@@ -91,6 +92,11 @@ export default function TvDetail() {
                     </div>
                 </div>
             )}
+
+             {/* Rəy Bölməsi */}
+            <div className="relative z-10 max-w-5xl w-full mx-auto px-5 pb-10">
+                <CommentSection mediaId={id} />
+            </div>
         </div>
     )
 }

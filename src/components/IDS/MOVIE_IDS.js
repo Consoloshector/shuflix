@@ -1,4 +1,5 @@
 export const MOVIE_IDS = [
+    { id: 619264, rating: 8.1 },
     { id: 1124, rating: 9.1 },
     { id: 1266127, rating: 7.1 },
     { id: 567609, rating: 6.9 },
