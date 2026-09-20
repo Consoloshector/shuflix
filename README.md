@@ -22,7 +22,7 @@
 
 - **Frontend:** React.js, Vite, Tailwind CSS
 - **API:** TMDB (The Movie Database) API
-- **Database & Auth (Planlaşdırılır):** Firebase
+- **Database & Auth:** Firebase
 
 ---
 
