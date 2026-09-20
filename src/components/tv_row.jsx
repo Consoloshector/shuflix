@@ -10,7 +10,7 @@ export default function TvRow({ title }) {
     useEffect(() => {
         const limitedIds = TV_IDS.slice(0, 6);
         const request = limitedIds.map((item) =>
-            fetch(`https://api.themoviedb.org/3/tv/${item.id}?api_key=717ecabf3d83680c8967286c22eec4b9`)
+            fetch(`https://api.themoviedb.org/3/tv/${item.id}?api_key=${import.meta.env.VITE_TMDB_API_KEY}`)
                 .then(res => res.json())
                 .then(data => ({
                     ...data,

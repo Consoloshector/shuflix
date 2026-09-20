@@ -14,8 +14,8 @@ export default function MovieDetail() {
     useEffect(() => {
         window.scrollTo(0, 0);
         Promise.all([
-            fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=717ecabf3d83680c8967286c22eec4b9&language=tr-TR`),
-            fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=717ecabf3d83680c8967286c22eec4b9&language=tr-TR`)
+            fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=tr-TR`),
+            fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=tr-TR`)
         ])
             .then(([resMovie, resCredits]) => Promise.all([resMovie.json(), resCredits.json()]))
             .then(([movie_data, credits_data]) => {

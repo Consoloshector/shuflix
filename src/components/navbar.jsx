@@ -22,7 +22,7 @@ function Navbar() {
             return
         }
 
-        fetch(`https://api.themoviedb.org/3/search/multi?api_key=717ecabf3d83680c8967286c22eec4b9&query=${query}`)
+        fetch(`https://api.themoviedb.org/3/search/multi?api_key=${import.meta.env.VITE_TMDB_API_KEY}&query=${query}`)
             .then((res) => res.json())
             .then((data) => {
                 if (data.results) {

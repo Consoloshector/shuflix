@@ -15,8 +15,8 @@ export default function TvDetail() {
         if (!isAllowed) {
             return
         }
-        Promise.all([fetch(`https://api.themoviedb.org/3/tv/${id}?api_key=717ecabf3d83680c8967286c22eec4b9&language=tr-TR`),
-        fetch(`https://api.themoviedb.org/3/tv/${id}/aggregate_credits?api_key=717ecabf3d83680c8967286c22eec4b9&language=tr-TR`)])
+        Promise.all([fetch(`https://api.themoviedb.org/3/tv/${id}?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=tr-TR`),
+        fetch(`https://api.themoviedb.org/3/tv/${id}/aggregate_credits?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=tr-TR`)])
             .then(([resTv, resCredits]) => Promise.all([resTv.json(), resCredits.json()]))
             .then(([tv_data, credits_data]) => {
                 setClicked_movie({
