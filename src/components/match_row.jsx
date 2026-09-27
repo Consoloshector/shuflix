@@ -12,11 +12,11 @@ export default function MatchRow() {
     }, []);
 
     return (
-        <div className="flex flex-col w-full gap-4 bg-[#000000] p-6 text-white">
+        <div className="flex flex-col w-full gap-4 bg-[#000000] p-6 text-white mt-3">
 
             <div className="flex w-full justify-between items-center ">
-                <h1 className="font-bold px-2 border-l-4 border-red-600 text-xl">Matclar</h1>
-                <Link to={`/match_more`} className="font-bold px-2 border-r-4 bg-black">daha cox</Link>
+                <h1 className="font-bold px-2 border-l-4 border-red-600 text-xl">Matçlar</h1>
+                <Link to={`/match_more`} className="font-bold px-2 border-r-4 bg-black">daha çox</Link>
             </div>
 
             <div className="flex flex-col overflow-x-auto gap-4
@@ -25,8 +25,8 @@ export default function MatchRow() {
                     <Link key={match.id} to={`/match/${match.id}`} className="border-1 border-zinc-800 min-w-[30%] rounded-xl overflow-hidden">
                         <div className="relative flex w-full p-3 justify-between">
                             <p className="truncate">{match.league}</p>
-                            <p className={`p-2 right-2 text-white font-bold text-xs px-2 py-1 rounded ${match.rating > 8.9 ? "bg-emerald-600" :
-                                match.rating > 7.9 ? "bg-green-600" : match.rating > 6 ? "bg-amber-600" : "bg-rose-600"
+                            <p className={`p-2 right-2 text-white font-bold text-xs px-2 py-1 rounded ${match.rating > 8.9 ? "bg-[#0383d6]" :
+                                match.rating > 7.9 ? "bg-emerald-600" : match.rating > 6 ? "bg-amber-600" : "bg-rose-600"
                                 }`}>
                                 ★ {match.rating}
                             </p>

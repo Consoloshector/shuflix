@@ -24,11 +24,11 @@ export default function TvRow({ title }) {
     }, []);
 
     return (
-        <div className="relative flex flex-col w-full gap-4 bg-[#000000] p-6 text-white">
+        <div className="relative flex flex-col w-full gap-4 bg-[#000000] p-6 text-white mt-3">
 
             <div className="flex w-full justify-between items-center ">
                 <h1 className="font-bold px-2 border-l-4 border-red-600 text-xl">{title}</h1>
-                <Link to={`/media_more/tv`} className="font-bold px-2 border-r-4 bg-black">daha cox</Link>
+                <Link to={`/media_more/tv`} className="font-bold px-2 border-r-4 bg-black">daha çox</Link>
             </div>
 
             <button
@@ -50,8 +50,8 @@ export default function TvRow({ title }) {
                     <Link key={Tvmovie.id} to={`/tv/${Tvmovie.id}`} className="block min-w-[35%] shrink-0">
                         <div className="relative shadow-lg border-2 border-zinc-800/90 rounded-xl ">
                             <img className="w-full h-[160px] sm:h-[180px] md:h-[250px] lg:h-[300px] rounded-xl opacity-[0.8] transition-all duration-300 hover:opacity-[0.6] cursor-pointer" src={`https://image.tmdb.org/t/p/w780${Tvmovie.backdrop_path}`} alt={Tvmovie.name} />
-                            <span className={`absolute top-2 right-2 text-white font-bold text-xs px-2 py-1 rounded ${Tvmovie.rating > 8.9 ? "bg-emerald-600" :
-                                Tvmovie.rating > 7.9 ? "bg-green-600" : Tvmovie.rating > 6 ? "bg-amber-600" : "bg-rose-600"
+                            <span className={`absolute top-2 right-2 text-white font-bold text-xs px-2 py-1 rounded ${Tvmovie.rating > 8.9 ? "bg-[#0383d6]" :
+                                Tvmovie.rating > 7.9 ? "bg-emerald-600" : Tvmovie.rating > 6 ? "bg-amber-600" : "bg-rose-600"
                                 }`}>
                                 ★ {Tvmovie.rating}
                             </span>

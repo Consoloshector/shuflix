@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Play } from "lucide-react";
 
 function Hero_banner() {
+    const the_id = 87108;
+    const adress = "tv";
+    const media = "chernobyl";
+
     const [movie, set_movie] = useState(null);
 
     useEffect(() => {
-        fetch(`https://api.themoviedb.org/3/search/movie?query=the platform&api_key=${import.meta.env.VITE_TMDB_API_KEY}`)
+        fetch(`https://api.themoviedb.org/3/search/${adress}?query=${media}&api_key=${import.meta.env.VITE_TMDB_API_KEY}`)
             .then(res => res.json())
             .then(data => {
                 set_movie(data.results[0]);
@@ -32,8 +37,8 @@ function Hero_banner() {
                 </div>
                 <p className="line-clamp-3">{movie.overview}</p>
                 <div className="flex gap-3 mt-2">
-                    <button className="flex gap-1 bg-white text-black p-3 font-bold rounded-md items-center"><Play className="w-5 h-5"></Play> Play</button>
-                    <button className="bg-zinc-600 p-3 font-bold rounded-md">ⓘ More Info</button>
+                    <a href="https://www.hdfilmcehennemi.land/dizi/chernobyl-izle-3/" className="flex gap-1 bg-white text-black p-3 font-bold rounded-md items-center"><Play className="w-5 h-5"></Play> Play</a>
+                    <Link to={`/${adress}/${the_id}`} className="bg-zinc-600 p-3 font-bold rounded-md">ⓘ More Info</Link>
                 </div>
             </div>
         </div>

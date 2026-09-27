@@ -21,8 +21,8 @@ export default function MatchMore() {
                         <div className="relative flex flex-col w-full gap-2 p-3 justify-between
                         sm:flex-row">
                             <p className="text-[0.9rem] truncate">{match.league}</p>
-                            <p className={`p-2 self-start text-white font-bold text-xs px-2 py-1 rounded ${match.rating > 8.9 ? "bg-emerald-600" :
-                                match.rating > 7.9 ? "bg-green-600" : match.rating > 6 ? "bg-amber-600" : "bg-rose-600"
+                            <p className={`p-2 self-start text-white font-bold text-xs px-2 py-1 rounded ${match.rating > 8.9 ? "bg-[#0383d6]" :
+                                match.rating > 7.9 ? "bg-emerald-600" : match.rating > 6 ? "bg-amber-600" : "bg-rose-600"
                                 }`}>
                                 ★ {match.rating}
                             </p>

@@ -17,26 +17,26 @@ function App() {
 
   return (
     <BrowserRouter>
+      <div className="bg-zinc-950">
+        <Navbar />
 
-      <Navbar />
+        <Routes>
+          <Route path="/" element={
+            <>
+              <HeroBanner />
+              <TvRow title={'Seriallar'} />
+              <MovieRow title={'Filmlər'} />
+              <MatchRow />
+            </>
+          } />
 
-      <Routes>
-        <Route path="/" element={
-          <>
-            <HeroBanner />
-            <TvRow title={'Seriallar'} />
-            <MovieRow title={'Filmlər'} />
-            <MatchRow />
-          </>
-        } />
-
-        <Route path="/tv/:id" element={<TvDetail />} />
-        <Route path="/movie/:id" element={<MovieDetail />} />
-        <Route path="/match/:id" element={<MatchDetail />} />
-        <Route path="/match_more" element={<MatchMore />} />
-        <Route path="/media_more/:type" element={<MediaMore />} />
-      </Routes>
-
+          <Route path="/tv/:id" element={<TvDetail />} />
+          <Route path="/movie/:id" element={<MovieDetail />} />
+          <Route path="/match/:id" element={<MatchDetail />} />
+          <Route path="/match_more" element={<MatchMore />} />
+          <Route path="/media_more/:type" element={<MediaMore />} />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }

@@ -22,6 +22,7 @@ export default function MatchDetail() {
 
     const [activeTab, setActiveTab] = useState("stats");
     const [activeLineups, setActiveLineups] = useState("home");
+    const [activeSubstitutes, setActiveSubstitutes] = useState("home");
     const { id } = useParams();
     const navigate = useNavigate();
     const match = MATCH_DATA[id]
@@ -65,7 +66,7 @@ export default function MatchDetail() {
             </div>
 
             <div className="flex flex-col">
-                <div className="flex gap-5 text-zinc-400 font-bold text-sm px-1 max-w-4xl mx-auto w-full py-4 border-b-2 border-zinc-800">
+                <div className="flex gap-5 text-zinc-400 font-bold overflow-auto text-sm px-1 max-w-4xl mx-auto w-full py-4 border-b-2 border-zinc-800">
                     <button onClick={() => setActiveTab("stats")} className={`${activeTab === "stats" ? "text-red-600" : "text-zinc-400"}`}>
                         Statistika
                     </button>
@@ -75,13 +76,16 @@ export default function MatchDetail() {
                     <button onClick={() => setActiveTab("lineups")} className={`${activeTab === "lineups" ? "text-red-600" : "text-zinc-400"}`}>
                         Heyətlər
                     </button>
+                    <button onClick={() => setActiveTab("substitutes")} className={`${activeTab === "substitutes" ? "text-red-600" : "text-zinc-400"}`}>
+                        Ehtiyyat
+                    </button>
                 </div>
 
                 <div className="w-full flex flex-col">
                     {activeTab === "stats" && (
                         <div className="flex flex-col mx-auto max-w-4xl w-full mt-5 gap-1">
                             <StatRow
-                                label="Topa nezaret"
+                                label="Topa nəzarət"
                                 home={`${match.possesions.home}%`}
                                 away={`${match.possesions.away}%`}
                                 home_percent={`${match.possesions.home_percent}`}
@@ -90,7 +94,7 @@ export default function MatchDetail() {
                                 awayBg={`${match.awayBg}`}
                             />
                             <StatRow
-                                label="Umumi zerbeler"
+                                label="Ümumi zərbələr"
                                 home={`${match.shoots.home}`}
                                 away={`${match.shoots.away}`}
                                 home_percent={`${match.shoots.home_percent}`}
@@ -99,7 +103,7 @@ export default function MatchDetail() {
                                 awayBg={`${match.awayBg}`}
                             />
                             <StatRow
-                                label="Deqiq zerbeler"
+                                label="Dəqiq zərbələr"
                                 home={`${match.shoots_on_target.home}`}
                                 away={`${match.shoots_on_target.away}`}
                                 home_percent={`${match.shoots_on_target.home_percent}`}
@@ -108,7 +112,7 @@ export default function MatchDetail() {
                                 awayBg={`${match.awayBg}`}
                             />
                             <StatRow
-                                label="Oturmeler"
+                                label="Ötürmələr"
                                 home={`${match.pass.home}`}
                                 away={`${match.pass.away}`}
                                 home_percent={`${match.pass.home_percent}`}
@@ -142,16 +146,7 @@ export default function MatchDetail() {
                     )}
 
                     {activeTab === "lineups" && (
-                        <div className="flex flex-col mx-auto max-w-4xl w-full mt-5 gap-2 text-white justify-between p-2">
-                            <div className="relative w-full h-[500px] flex">
-                                <div className=" bg-[#3c8063] w-[50%] h-full border-2 border-[#77a692]">
-                                    <div>
-                                        {match.lineups.home[0]}
-                                    </div>
-                                </div>
-                                <div className=" bg-[#3c8063] w-[50%] h-full border-2 border-[#77a692]"></div>
-                                <div className="absolute w-[200px] h-[200px] rounded-full left-1/2 top-1/2 border-2 border-[#77a692] -translate-x-1/2 -translate-y-1/2"></div>
-                            </div>
+                        <div className="flex flex-col mx-auto max-w-4xl w-full mt-5 gap-4 text-white justify-between p-2">
                             <div className="flex w-full justify-between">
                                 <button className="flex items-center gap-2 font-bold" onClick={() => setActiveLineups("home")}>
                                     <img className="w-7 h-7" src={MATCH_DATA[id].homeLogo} alt="" />{MATCH_DATA[id].team1}
@@ -173,13 +168,45 @@ export default function MatchDetail() {
                                 {activeLineups === "away" && (
                                     <div className="flex flex-col gap-1">
                                         {MATCH_DATA[id].lineups.away.map((a_player) => (
-                                            <p className="border-b-2 border-zinc-900 p-3 text-sm">{a_player}</p>
+                                            <p className="border-b-2 border-zinc-900 p-3 text-sm text-end">{a_player}</p>
                                         ))}
                                     </div>
                                 )}
                             </div>
                         </div>
                     )}
+
+                    {activeTab === "substitutes" && (
+                        <div className="flex flex-col mx-auto max-w-4xl w-full mt-5 gap-4 text-white justify-between p-2">
+                            <div className="flex w-full justify-between">
+                                <button className="flex items-center gap-2 font-bold" onClick={() => setActiveSubstitutes("home")}>
+                                    <img className="w-7 h-7" src={MATCH_DATA[id].homeLogo} alt="" />{MATCH_DATA[id].team1}
+                                </button>
+                                <button className="flex items-center gap-2 font-bold flex-row-reverse" onClick={() => setActiveSubstitutes("away")}>
+                                    <img className="w-7 h-7" src={MATCH_DATA[id].awayLogo} alt="" />{MATCH_DATA[id].team2}
+                                </button>
+                            </div>
+                            <div>
+                                {activeSubstitutes === "home" && (
+                                    <div className="flex flex-col gap-1">
+
+                                        {MATCH_DATA[id].substitutes.home.map((h_player) => (
+                                            <p className="border-b-2 border-zinc-900 p-3 text-sm">{h_player}</p>
+                                        ))}
+
+                                    </div>
+                                )}
+                                {activeSubstitutes === "away" && (
+                                    <div className="flex flex-col gap-1">
+                                        {MATCH_DATA[id].substitutes.away.map((a_player) => (
+                                            <p className="border-b-2 border-zinc-900 p-3 text-sm text-end">{a_player}</p>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    )}
+
                 </div>
             </div>
 

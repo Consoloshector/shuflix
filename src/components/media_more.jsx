@@ -64,8 +64,8 @@ export default function MediaMore() {
                 {filteredmedia.map((media) => (
                     <Link to={`/${type}/${media.id}`} key={media.id} className="relative border-2 border-zinc-900 hover:border-2 hover:border-zinc-700 rounded-2xl overflow-hidden">
                         <img className="w-full h-[230px] sm:h-[280px]" src={`https://image.tmdb.org/t/p/w780${media.poster_path}`} alt={media.name} />
-                         <span className={`absolute top-2 right-2 text-white font-bold text-xs px-2 py-1 rounded ${media.rating > 8.9 ? "bg-emerald-600" :
-                           media.rating>7.9 ?"bg-green-600" : media.rating > 6 ? "bg-amber-600" : "bg-rose-600"
+                         <span className={`absolute top-2 right-2 text-white font-bold text-xs px-2 py-1 rounded ${media.rating > 8.9 ? "bg-[#0383d6]" :
+                           media.rating>7.9 ?"bg-emerald-600" : media.rating > 6 ? "bg-amber-600" : "bg-rose-600"
                             }`}>
                             ★ {media.rating}
                         </span>
